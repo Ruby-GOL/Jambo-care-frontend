@@ -7,7 +7,7 @@ between healthcare professionals and patients is critical
 
 The repositories are structured as follows:
 
-- [Backend](https://github.com/Ruby-GOL/Jambocare_backend): This repo contains the backend code of the JamboCare platform, including the API endpoints, database models, and business logic implemented in Python using the Flask framework.
+- [Backend](https://github.com/Ruby-GOL/Jambocare_backend): This repo contains the backend code of the JamboCare platform, including the API endpoints, database models, and business logic implemented in Python using Django and Django REST frameworks.
 - [Frontend](https://github.com/Ruby-GOL/Jambo-care-frontend): Here, you will find the frontend code for the JamboCare platform, implemented using JavaScript, React, and Redux. This directory also includes the HTML, CSS, and JavaScript files for the user interface.
 
 ## Purpose
