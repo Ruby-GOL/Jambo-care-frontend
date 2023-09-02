@@ -1,7 +1,7 @@
 import React from "react";
 import "./landingpage.css";
 import landing_pic from "../Assets/landing2.png";
-import logo from "../Assets/logo3.png";
+import logo from "../Assets/logo.png";
 const Landingpage = () => {
   return (
     <section>

@@ -14,7 +14,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     height:100vh;
-    background: radial-gradient(at bottom right,#5ddce7 , #8a57fe);
+    background: linear-gradient( to bottom right, #8a57fe ,#5ddce7);
   }
   section{
     display: flex;
