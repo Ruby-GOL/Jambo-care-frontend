@@ -1,13 +1,13 @@
 import "./App.css";
-import Landingpage from "./components/Landing/Landingpage";
-import Loginpage from "./components/Login/Loginpage";
-import Signuppage from "./components/Signup/Signup";
+import { RouterProvider } from "react-router-dom";
+import router from "./Routes";
+
 function App() {
-  return <div >
- {/* <Loginpage/> */}
- {/* <Landingpage/> */}
- <Signuppage/>
-</div>
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
 }
 
 export default App;
