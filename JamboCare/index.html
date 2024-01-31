@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recorded file</title>
+    <link rel="stylesheet" href="/JamboCare/style.css" />
+  </head>
+  <body>
+    <header>
+        <div class="topnav">
+      <div class="logo">Linguify Pro</div>
+      <button class="record">Record</button>
+      <button class="reset">Reset</button>
+   
+    </div>
+    </header>
+    <div class="row">
+      <div class="column">
+        <div class="card">
+    <h3>Recorded audio</h3>
+    <button id="recordButton">Record</button>
+  <button id="stopButton" disabled>Stop</button>
+  <button id="playButton" disabled>Play</button>
+
+  <audio id="audioPlayer" controls></audio>
+        </div>
+      </div>
+
+      <div class="column">
+        <div class="card">
+          <h3>Translation Results</h3>
+          <p>Choose Languages</p>
+          <label for="language">Translate from:</label>
+          <select name="languages" id="language">
+            <option value="somali">Somali</option>
+            <option value="german">German</option>
+            <option value="english">English</option>
+            <option value="french">French</option>
+            <option value="swahili">Swahili</option>
+            <option value="zulu">Zulu</option>
+            <option value="kamba">Kamba</option>
+            <option value="luo">Luo</option>
+            <option value="kikuyu">Kikuyu</option>
+          </select>
+          <br />
+          <label for="languages">Translate to:</label>
+          <select name="languages" id="languages">
+            <option value="somali">Somali</option>
+            <option value="german">German</option>
+            <option value="english">English</option>
+            <option value="french">French</option>
+            <option value="swahili">Swahili</option>
+            <option value="zulu">Zulu</option>
+            <option value="kamba">Kamba</option>
+            <option value="luo">Luo</option>
+            <option value="kikuyu">Kikuyu</option>
+          </select>
+          <br />
+          <button class="dropbtn">Translate</button>
+        </div>
+      </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          let mediaRecorder;
+          let recordedChunks = [];
+          const recordButton = document.getElementById('recordButton');
+          const stopButton = document.getElementById('stopButton');
+          const playButton = document.getElementById('playButton');
+          const audioPlayer = document.getElementById('audioPlayer');
+    
+          recordButton.addEventListener('click', startRecording);
+          stopButton.addEventListener('click', stopRecording);
+          playButton.addEventListener('click', playRecording);
+    
+          function startRecording() {
+            navigator.mediaDevices.getUserMedia({ audio: true })
+              .then((stream) => {
+                mediaRecorder = new MediaRecorder(stream);
+    
+                mediaRecorder.ondataavailable = (event) => {
+                  if (event.data.size > 0) {
+                    recordedChunks.push(event.data);
+                  }
+                };
+    
+                mediaRecorder.onstop = () => {
+                  playButton.disabled = false;
+                  audioPlayer.src = URL.createObjectURL(new Blob(recordedChunks));
+                  recordedChunks = [];
+                };
+    
+                mediaRecorder.start();
+                recordButton.disabled = true;
+                stopButton.disabled = false;
+                playButton.disabled = true;
+              })
+              .catch((error) => {
+                console.error('Error accessing microphone:', error);
+              });
+          }
+    
+          function stopRecording() {
+            if (mediaRecorder.state === 'recording') {
+              mediaRecorder.stop();
+              recordButton.disabled = false;
+              stopButton.disabled = true;
+            }
+          }
+    
+          function playRecording() {
+            audioPlayer.play();
+          }
+        });
+      </script>
+  </body>
+</html>

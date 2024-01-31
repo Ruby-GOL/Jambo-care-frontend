@@ -1,0 +1,131 @@
+body{
+    background: linear-gradient(  to bottom,  #61afe3, white);
+  
+}
+header{
+    background-color: blue;
+    overflow: hidden;
+    margin: 0;
+    padding:0;
+}
+h1{
+    font-size: 35px;
+    text-align: center;
+}
+.next {
+    background-color: #3498DB;
+    color: white;
+    padding: 7px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  #recordButton, #stopButton {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  audio {
+    margin-top: 20px;
+  }
+  #recordButton, #stopButton, #playButton {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+  }
+/* Float  columns side by side */
+.column {
+  float: left;
+  width: 40%;
+  padding: 0 10px;
+
+
+}
+.card-main{
+   
+        width: auto;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: #f1f1f1;
+}
+/* Remove extra left and right margins, due to padding */
+.row {margin: 0 -5px;}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive columns */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+
+/* Style the counter cards */
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  text-align: center;
+  background-color: #f1f1f1;
+}
+.dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 7px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+.topnav {
+    overflow: hidden;
+    background-color: #3e8ed0;
+  }
+  
+  .topnav .logo {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 27px;
+    font-weight: bold;
+  }
+ .reset{
+    float: right;
+    color:white;
+   
+    text-align: center;
+    padding: 10px px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: transparent;
+  }
+
+  .record{
+    float: right;
+    color:white;
+    border-radius: 0px;
+    text-align: center;
+    padding: 10px px;
+    text-decoration: none;
+    font-size: 17px;
+    background-color: transparent;
+  }

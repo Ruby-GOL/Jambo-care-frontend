@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recording audio</title>
+    <link rel="stylesheet" href="/JamboCare/style.css" />
+</head>
+<body>
+    <header>
+        <div class="topnav">
+      <div class="logo">Linguify Pro</div>
+      <button class="record">Record</button>
+      <button class="reset">Reset</button>
+   
+    </div>
+    </header>
+    <div class="column">
+        <div class="card-main">
+            <h1>Record audio</h1>
+            <button id="recordButton">Record</button>
+            <button id="stopButton" disabled>Stop</button>
+          
+            <audio controls></audio>
+  <div>
+        <a class="next" href="/JamboCare/index.html">Continue</a></div>
+    </div>
+      </div>
+    
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let mediaRecorder;
+      let recordedChunks = [];
+
+      const recordButton = document.getElementById('recordButton');
+      const stopButton = document.getElementById('stopButton');
+      const audio = document.querySelector('audio');
+
+      recordButton.addEventListener('click', startRecording);
+      stopButton.addEventListener('click', stopRecording);
+
+      function startRecording() {
+        navigator.mediaDevices.getUserMedia({ audio: true })
+          .then((stream) => {
+            mediaRecorder = new MediaRecorder(stream);
+
+            mediaRecorder.ondataavailable = (event) => {
+              if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+              }
+            };
+
+            mediaRecorder.onstop = () => {
+              const blob = new Blob(recordedChunks, { type: 'audio/wav' });
+              recordedChunks = [];
+
+              audio.src = URL.createObjectURL(blob);
+            };
+
+            mediaRecorder.start();
+            recordButton.disabled = true;
+            stopButton.disabled = false;
+          })
+          .catch((error) => {
+            console.error('Error accessing microphone:', error);
+          });
+      }
+
+      function stopRecording() {
+        if (mediaRecorder.state === 'recording') {
+          mediaRecorder.stop();
+          recordButton.disabled = false;
+          stopButton.disabled = true;
+        }
+      }
+    });
+  </script>
+  </body>
+</html>
